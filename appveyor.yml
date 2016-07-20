@@ -11,4 +11,3 @@ assembly_info:
 build:
   project: AE.Http.Proxy.sln
   parallel: true
-  verbosity: normal
