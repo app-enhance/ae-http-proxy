@@ -34,7 +34,30 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Context\ContentDescriptor.cs" />
+    <Compile Include="Context\Converters\ConvertersExtensions.cs" />
+    <Compile Include="Context\Converters\IMessageConverter.cs" />
+    <Compile Include="Context\Converters\IMessageConverterGeneric.cs" />
+    <Compile Include="Context\Extensions.cs" />
+    <Compile Include="Context\Filters\ForbiddenHeaders\ForbiddenHeadersConfiguration.cs" />
+    <Compile Include="Context\Filters\ForbiddenHeaders\ForbiddenHeadersProxyFilter.cs" />
+    <Compile Include="Context\Filters\IPRoxyFilter.cs" />
+    <Compile Include="Context\Filters\RewriteContent\RewriteContentConfiguration.cs" />
+    <Compile Include="Context\Filters\RewriteContent\RewriteContentProxyFilter.cs" />
+    <Compile Include="Context\HeaderContext.cs" />
+    <Compile Include="Context\HeaderOrigin.cs" />
+    <Compile Include="Context\IHeaderContext.cs" />
+    <Compile Include="Context\IRequestContext.cs" />
+    <Compile Include="Context\MessageContext.cs" />
+    <Compile Include="Context\RequestContext.cs" />
+    <Compile Include="Context\RequestMethod.cs" />
+    <Compile Include="Context\ResponseContext.cs" />
+    <Compile Include="IProxy.cs" />
+    <Compile Include="IProxyCaller.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Proxy.cs" />
+    <Compile Include="ProxyBuilder.cs" />
+    <Compile Include="ProxyCaller.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
