@@ -1,4 +1,4 @@
-﻿namespace SelfServiceProxy.Api.PFM.Proxy.Context.Filters.ForbiddenHeaders
+﻿namespace AE.Http.Proxy.Context.Filters.ForbiddenHeaders
 {
     using System.Collections.Generic;
     using System.Linq;

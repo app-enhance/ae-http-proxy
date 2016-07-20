@@ -1,11 +1,11 @@
-﻿namespace SelfServiceProxy.Api.PFM.Proxy
+﻿namespace AE.Http.Proxy
 {
     using System;
     using System.Collections.Generic;
     using System.Linq;
 
-    using SelfServiceProxy.Api.PFM.Proxy.Context.Converters;
-    using SelfServiceProxy.Api.PFM.Proxy.Context.Filters;
+    using AE.Http.Proxy.Context.Converters;
+    using AE.Http.Proxy.Context.Filters;
 
     public class ProxyBuilder
     {

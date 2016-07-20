@@ -1,4 +1,4 @@
-﻿namespace SelfServiceProxy.Api.PFM.Proxy
+﻿namespace AE.Http.Proxy
 {
     public interface IProxy
     {

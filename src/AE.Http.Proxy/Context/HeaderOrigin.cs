@@ -1,4 +1,4 @@
-﻿namespace SelfServiceProxy.Api.PFM.Proxy.Context
+﻿namespace AE.Http.Proxy.Context
 {
     public enum HeaderOrigin
     {

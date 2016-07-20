@@ -1,4 +1,4 @@
-﻿namespace SelfServiceProxy.Api.PFM.Proxy.Context.Filters
+﻿namespace AE.Http.Proxy.Context.Filters
 {
     public interface IProxyFilter
     {

@@ -1,4 +1,4 @@
-﻿namespace SelfServiceProxy.Api.PFM.Proxy.Context
+﻿namespace AE.Http.Proxy.Context
 {
     using System;
     using System.Collections.Generic;

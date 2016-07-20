@@ -1,9 +1,9 @@
-﻿namespace SelfServiceProxy.Api.PFM.Proxy
+﻿namespace AE.Http.Proxy
 {
     using System.Collections.Generic;
 
-    using SelfServiceProxy.Api.PFM.Proxy.Context;
-    using SelfServiceProxy.Api.PFM.Proxy.Context.Converters;
+    using AE.Http.Proxy.Context;
+    using AE.Http.Proxy.Context.Converters;
 
     public abstract class ProxyCaller<TRequest, TResponse> : IProxyCaller
     {

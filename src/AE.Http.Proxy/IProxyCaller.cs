@@ -1,6 +1,6 @@
-﻿namespace SelfServiceProxy.Api.PFM.Proxy
+﻿namespace AE.Http.Proxy
 {
-    using SelfServiceProxy.Api.PFM.Proxy.Context;
+    using AE.Http.Proxy.Context;
 
     public interface IProxyCaller
     {

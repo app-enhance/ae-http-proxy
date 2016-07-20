@@ -1,4 +1,4 @@
-﻿namespace SelfServiceProxy.Api.PFM.Proxy.Context.Converters
+﻿namespace AE.Http.Proxy.Context.Converters
 {
     public interface IMessageConverter
     {

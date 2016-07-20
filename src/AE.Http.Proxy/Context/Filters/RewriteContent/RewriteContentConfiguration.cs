@@ -1,4 +1,4 @@
-namespace SelfServiceProxy.Api.PFM.Proxy.Context.Filters.RewriteContent
+namespace AE.Http.Proxy.Context.Filters.RewriteContent
 {
     using System;
 
