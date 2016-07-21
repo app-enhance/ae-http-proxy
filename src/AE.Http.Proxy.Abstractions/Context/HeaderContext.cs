@@ -5,7 +5,7 @@
 
     public class HeaderContext : IHeaderContext
     {
-        private readonly List<string> valueHistory;
+        private readonly List<string> _valueHistory;
 
         public HeaderContext(IHeaderContext header, HeaderOrigin origin)
             : this(header.Key, header.Value, origin)
@@ -14,9 +14,9 @@
 
         public HeaderContext(string key, string value, HeaderOrigin origin)
         {
-            this.Key = key;
-            this.Origin = origin;
-            this.valueHistory = new List<string> { value };
+            Key = key;
+            Origin = origin;
+            _valueHistory = new List<string> { value };
         }
 
         public HeaderOrigin Origin { get; private set; }
@@ -25,28 +25,28 @@
 
         public string Value
         {
-            get { return this.valueHistory.Last(); }
+            get { return _valueHistory.Last(); }
         }
 
         public IEnumerable<string> ValueHistory
         {
-            get { return this.valueHistory.ToList(); }
+            get { return _valueHistory.ToList(); }
         }
 
         public bool IsDeleted { get; private set; }
-        
+
         public bool IsModified { get; private set; }
 
         public void ChangeValue(string value)
         {
-            this.valueHistory.Add(value);
-            this.IsModified = true;
+            _valueHistory.Add(value);
+            IsModified = true;
         }
 
         public void MarkAsDeleted()
         {
-            this.IsDeleted = true;
-            this.IsModified = true;
+            IsDeleted = true;
+            IsModified = true;
         }
     }
 }

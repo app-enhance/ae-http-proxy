@@ -10,31 +10,31 @@
     {
         private const string EmptyRoute = "/";
 
-        private readonly Regex regex;
+        private readonly RewriteContentConfiguration _config;
 
-        private readonly RewriteContentConfiguration config;
+        private readonly Lazy<string> _realRoutePath;
 
-        private readonly Lazy<string> realRoutePath;
+        private readonly Regex _regex;
 
         public RewriteContentProxyFilter(RewriteContentConfiguration configuration)
         {
-            this.config = configuration;
-            var regexpPattern = string.Format(@"(?:href|src)=([""'])({0}|(?!mailto|http))\/\w.*?([""'])", this.config.SourceBaseAuthority);
-            this.regex = new Regex(regexpPattern, RegexOptions.Compiled);
+            _config = configuration;
+            var regexpPattern = string.Format(@"(?:href|src)=([""'])({0}|(?!mailto|http))\/\w.*?([""'])", _config.SourceBaseAuthority);
+            _regex = new Regex(regexpPattern, RegexOptions.Compiled);
 
-            this.realRoutePath = new Lazy<string>(() => Combine(this.config.HostVirtualPath, this.config.RoutePath));
+            _realRoutePath = new Lazy<string>(() => Combine(_config.HostVirtualPath, _config.RoutePath));
         }
 
         public void OnRequest(RequestContext requestContext)
         {
-            requestContext.Path = this.RewriteRequestPath(requestContext.Path);
+            requestContext.Path = RewriteRequestPath(requestContext.Path);
         }
 
         public void OnResponse(ResponseContext responseContext)
         {
             if (responseContext.ContentDescriptor == ContentDescriptor.PlainText)
             {
-                var rewroteContent = this.RewriteContent(responseContext.Content);
+                var rewroteContent = RewriteContent(responseContext.Content);
                 responseContext.SetContent(rewroteContent);
             }
         }
@@ -48,14 +48,14 @@
 
         private string RewriteRequestPath(string path)
         {
-            var route = this.config.RoutePath;
+            var route = _config.RoutePath;
             return route == EmptyRoute ? path : path.Substring(route.Length);
         }
 
         private string RewriteContent(string content)
         {
-            var route = this.realRoutePath.Value;
-            return route == EmptyRoute ? content : this.regex.Replace(content, this.Evaluator);
+            var route = _realRoutePath.Value;
+            return route == EmptyRoute ? content : _regex.Replace(content, Evaluator);
         }
 
         private string Evaluator(Match match)
@@ -63,11 +63,11 @@
             var mark = match.Value[match.Value.IndexOf('=') + 1];
 
             var parts = match.Value.Split(mark);
-            var route = this.realRoutePath.Value;
+            var route = _realRoutePath.Value;
 
-            if (parts[1].Contains(this.config.SourceBaseAuthority))
+            if (parts[1].Contains(_config.SourceBaseAuthority))
             {
-                return match.Value.Replace(this.config.SourceBaseAuthority, Combine(this.config.HostBaseAuthority, route));
+                return match.Value.Replace(_config.SourceBaseAuthority, Combine(_config.HostBaseAuthority, route));
             }
 
             return string.Format(@"{0}{2}{1}{2}", parts[0], Combine(route, parts[1]), mark);

@@ -7,19 +7,19 @@
 
     public abstract class ProxyCaller<TRequest, TResponse> : IProxyCaller
     {
-        private readonly IEnumerable<IMessageConverter> messageConverters;
+        private readonly IEnumerable<IMessageConverter> _messageConverters;
 
         protected ProxyCaller(IEnumerable<IMessageConverter> messageConverters)
         {
-            this.messageConverters = messageConverters;
+            _messageConverters = messageConverters;
         }
 
         public ResponseContext Execute(RequestContext requestContext)
         {
-            var messageConverter = this.messageConverters.FindMessageConverter<TRequest, TResponse>();
+            var messageConverter = _messageConverters.FindMessageConverter<TRequest, TResponse>();
             var request = messageConverter.ConvertToRequest(requestContext);
 
-            var response = this.ExecuteInternal(request);
+            var response = ExecuteInternal(request);
 
             return messageConverter.ConvertFromResponse(response, requestContext);
         }

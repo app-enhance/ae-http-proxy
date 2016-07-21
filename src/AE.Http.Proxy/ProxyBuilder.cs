@@ -10,11 +10,11 @@
 
     public class ProxyBuilder
     {
-        private readonly List<IMessageConverter> messageConverters;
+        private readonly IProxyCaller _caller;
 
-        private readonly List<IProxyFilter> proxyfilters;
+        private readonly List<IMessageConverter> _messageConverters;
 
-        private readonly IProxyCaller caller;
+        private readonly List<IProxyFilter> _proxyfilters;
 
         public ProxyBuilder(IProxyCaller caller)
         {
@@ -23,9 +23,9 @@
                 throw new ArgumentNullException("caller");
             }
 
-            this.caller = caller;
-            this.messageConverters = new List<IMessageConverter>();
-            this.proxyfilters = new List<IProxyFilter>();
+            _caller = caller;
+            _messageConverters = new List<IMessageConverter>();
+            _proxyfilters = new List<IProxyFilter>();
         }
 
         public ProxyBuilder AddMessageConverters(params IMessageConverter[] converters)
@@ -37,7 +37,7 @@
 
             foreach (var messageConverter in converters)
             {
-                this.AddMessageConverter(messageConverter);
+                AddMessageConverter(messageConverter);
             }
 
             return this;
@@ -50,7 +50,7 @@
                 throw new ArgumentNullException("messageConverter");
             }
 
-            this.messageConverters.Add(messageConverter);
+            _messageConverters.Add(messageConverter);
             return this;
         }
 
@@ -63,7 +63,7 @@
 
             foreach (var filter in filters)
             {
-                this.AddFilter(filter);
+                AddFilter(filter);
             }
 
             return this;
@@ -76,13 +76,13 @@
                 throw new ArgumentNullException("filter");
             }
 
-            this.proxyfilters.Add(filter);
+            _proxyfilters.Add(filter);
             return this;
         }
 
         public IProxy Build()
         {
-            return new Proxy(this.messageConverters, this.proxyfilters, this.caller);
+            return new Proxy(_messageConverters, _proxyfilters, _caller);
         }
     }
 }

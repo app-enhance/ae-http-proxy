@@ -7,9 +7,9 @@
 
     public abstract class MessageContext
     {
-        private readonly Dictionary<string, HeaderContext> headers;
+        private readonly Dictionary<string, HeaderContext> _headers;
 
-        private readonly List<byte[]> rawContentHistory;
+        private readonly List<byte[]> _rawContentHistory;
 
         protected MessageContext(IDictionary<string, string> headers, byte[] rawContent)
         {
@@ -18,47 +18,47 @@
                 throw new ArgumentNullException("headers");
             }
 
-            this.headers = headers.ToDictionary(x => x.Key, x => new HeaderContext(x.Key, x.Value, this.InitialHeadersOrigin));
-            this.rawContentHistory = new List<byte[]> { rawContent ?? new byte[0] };
+            _headers = headers.ToDictionary(x => x.Key, x => new HeaderContext(x.Key, x.Value, InitialHeadersOrigin));
+            _rawContentHistory = new List<byte[]> { rawContent ?? new byte[0] };
         }
 
         public IEnumerable<IHeaderContext> Headers
         {
-            get { return this.headers.Select(x => x.Value).ToList(); }
+            get { return _headers.Select(x => x.Value).ToList(); }
         }
 
         public string Content
         {
             get
             {
-                var rawContent = this.rawContentHistory.Last();
+                var rawContent = _rawContentHistory.Last();
                 return Encoding.UTF8.GetString(rawContent, 0, rawContent.Length);
             }
         }
 
         public byte[] RawContent
         {
-            get { return this.rawContentHistory.Last(); }
+            get { return _rawContentHistory.Last(); }
         }
 
         public long ContentLength
         {
-            get { return this.RawContent.Length; }
+            get { return RawContent.Length; }
         }
 
         public IEnumerable<byte[]> RawContentHistory
         {
-            get { return this.rawContentHistory.ToList(); }
+            get { return _rawContentHistory.ToList(); }
         }
 
         public ContentDescriptor ContentDescriptor
         {
-            get { return this.RetrieveContentDescriptor(); }
+            get { return RetrieveContentDescriptor(); }
         }
 
         public string ContentType
         {
-            get { return this.GetContentType(); }
+            get { return GetContentType(); }
         }
 
         protected abstract HeaderOrigin InitialHeadersOrigin { get; }
@@ -66,7 +66,7 @@
         public void SetContent(string content, string contentType = null)
         {
             var rawBytes = Encoding.UTF8.GetBytes(content);
-            this.SetContent(rawBytes, string.IsNullOrWhiteSpace(contentType) ? this.ContentType : contentType);
+            SetContent(rawBytes, string.IsNullOrWhiteSpace(contentType) ? ContentType : contentType);
         }
 
         public void SetContent(byte[] content, string contentType)
@@ -76,27 +76,27 @@
                 throw new ArgumentNullException("contentType");
             }
 
-            this.SetHeader("Content-Type", contentType);
-            this.SetHeader("Content-Length", content.Length.ToString());
-            this.rawContentHistory.Add(content);
+            SetHeader("Content-Type", contentType);
+            SetHeader("Content-Length", content.Length.ToString());
+            _rawContentHistory.Add(content);
         }
 
         public void SetHeader(string key, string value)
         {
-            var header = this.FindHeader(key);
+            var header = FindHeader(key);
             if (header != null)
             {
                 header.ChangeValue(value);
             }
             else
             {
-                this.headers.Add(key, new HeaderContext(key, value, HeaderOrigin.New));
+                _headers.Add(key, new HeaderContext(key, value, HeaderOrigin.New));
             }
         }
 
         public void DeleteHeader(string key)
         {
-            var header = this.FindHeader(key);
+            var header = FindHeader(key);
             if (header == null)
             {
                 throw new KeyNotFoundException(string.Format("There is no header with key: {0}", key));
@@ -108,18 +108,18 @@
         private HeaderContext FindHeader(string key)
         {
             HeaderContext header;
-            return this.headers.TryGetValue(key, out header) ? header : null;
+            return _headers.TryGetValue(key, out header) ? header : null;
         }
 
         private string GetContentType()
         {
-            var contentTypeHeader = this.FindHeader("Content-Type");
+            var contentTypeHeader = FindHeader("Content-Type");
             return contentTypeHeader == null ? null : contentTypeHeader.Value;
         }
 
         private ContentDescriptor RetrieveContentDescriptor()
         {
-            var contentType = this.ContentType;
+            var contentType = ContentType;
             if (contentType == null)
             {
                 return ContentDescriptor.Unkown;

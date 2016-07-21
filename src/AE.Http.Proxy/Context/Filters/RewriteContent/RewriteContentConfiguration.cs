@@ -21,12 +21,12 @@ namespace AE.Http.Proxy.Context.Filters.RewriteContent
                 throw new ArgumentNullException("sourceBaseAddress");
             }
 
-            this.RoutePath = FixRoutePath(routePath);
+            RoutePath = FixRoutePath(routePath);
 
             try
             {
-                this.HostBaseAddress = new Uri(hostBaseAddress, UriKind.Absolute);
-                this.SourceBaseAddress = new Uri(sourceBaseAddress, UriKind.Absolute);
+                HostBaseAddress = new Uri(hostBaseAddress, UriKind.Absolute);
+                SourceBaseAddress = new Uri(sourceBaseAddress, UriKind.Absolute);
             }
             catch (Exception e)
             {
@@ -42,17 +42,17 @@ namespace AE.Http.Proxy.Context.Filters.RewriteContent
 
         public string HostVirtualPath
         {
-            get { return this.HostBaseAddress.LocalPath; }
+            get { return HostBaseAddress.LocalPath; }
         }
 
         public string SourceBaseAuthority
         {
-            get { return this.SourceBaseAddress.GetLeftPart(UriPartial.Authority); }
+            get { return SourceBaseAddress.GetLeftPart(UriPartial.Authority); }
         }
 
         public string HostBaseAuthority
         {
-            get { return this.HostBaseAddress.GetLeftPart(UriPartial.Authority); }
+            get { return HostBaseAddress.GetLeftPart(UriPartial.Authority); }
         }
 
         private static string FixRoutePath(string routePath)

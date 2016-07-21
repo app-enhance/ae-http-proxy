@@ -7,8 +7,8 @@
     {
         public ForbiddenHeadersConfiguration(IEnumerable<string> forbiddenRequestHeaders, IEnumerable<string> forbiddenResponseHeaders)
         {
-            this.ForbiddenRequestHeaders = forbiddenRequestHeaders ?? Enumerable.Empty<string>();
-            this.ForbiddenResponseHeaders = forbiddenResponseHeaders ?? Enumerable.Empty<string>();
+            ForbiddenRequestHeaders = forbiddenRequestHeaders ?? Enumerable.Empty<string>();
+            ForbiddenResponseHeaders = forbiddenResponseHeaders ?? Enumerable.Empty<string>();
         }
 
         public IEnumerable<string> ForbiddenRequestHeaders { get; private set; }

@@ -11,7 +11,8 @@
             var messageConverter = messageConverters.FirstOrDefault(x => x.CanConvertFrom<TRequest, TResponse>()) as IMessageConverter<TRequest, TResponse>;
             if (messageConverter == null)
             {
-                throw new ArgumentException(string.Format("Cannot find correct converter for pair request/response type ({0}/{1})", typeof(TRequest).Name, typeof(TResponse).Name));
+                throw new ArgumentException(
+                    string.Format("Cannot find correct converter for pair request/response type ({0}/{1})", typeof(TRequest).Name, typeof(TResponse).Name));
             }
 
             return messageConverter;

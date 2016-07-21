@@ -8,21 +8,21 @@
 
     public class ForbiddenHeadersProxyFilter : IProxyFilter
     {
-        private readonly ForbiddenHeadersConfiguration configuration;
+        private readonly ForbiddenHeadersConfiguration _configuration;
 
         public ForbiddenHeadersProxyFilter(ForbiddenHeadersConfiguration configuration)
         {
-            this.configuration = configuration;
+            _configuration = configuration;
         }
 
         public void OnRequest(RequestContext requestContext)
         {
-            RemoveHeaders(requestContext, this.configuration.ForbiddenRequestHeaders);
+            RemoveHeaders(requestContext, _configuration.ForbiddenRequestHeaders);
         }
 
         public void OnResponse(ResponseContext responseContext)
         {
-            RemoveHeaders(responseContext, this.configuration.ForbiddenResponseHeaders);
+            RemoveHeaders(responseContext, _configuration.ForbiddenResponseHeaders);
         }
 
         private static void RemoveHeaders(MessageContext context, IEnumerable<string> forbiddenHeaders)

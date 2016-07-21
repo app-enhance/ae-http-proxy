@@ -18,8 +18,8 @@
                 throw new ArgumentException("Status parameter is incorrect");
             }
 
-            this.Status = status;
-            this.Request = request;
+            Status = status;
+            Request = request;
         }
 
         public IRequestContext Request { get; private set; }
