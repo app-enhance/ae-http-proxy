@@ -34,7 +34,7 @@
                     response = DoCall(request);
                     break;
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     // this.Logger.Warning(string.Format("Retries no. {0} sent request to {1} with error: {2}", attempts, request.Resource, e.Message));
                     if (attempts == NumberOfRetries)
