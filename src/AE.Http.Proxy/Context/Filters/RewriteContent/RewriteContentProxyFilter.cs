@@ -3,6 +3,9 @@
     using System;
     using System.Text.RegularExpressions;
 
+    using AE.Http.Proxy.Abstractions.Context;
+    using AE.Http.Proxy.Abstractions.Context.Filters;
+
     public class RewriteContentProxyFilter : IProxyFilter
     {
         private const string EmptyRoute = "/";

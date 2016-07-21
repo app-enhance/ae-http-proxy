@@ -1,4 +1,4 @@
-﻿namespace AE.Http.Proxy.Context
+﻿namespace AE.Http.Proxy.Abstractions.Context
 {
     using System;
     using System.Collections.Generic;

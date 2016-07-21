@@ -1,6 +1,6 @@
-﻿namespace AE.Http.Proxy
+﻿namespace AE.Http.Proxy.Abstractions
 {
-    using AE.Http.Proxy.Context;
+    using AE.Http.Proxy.Abstractions.Context;
 
     public interface IProxyCaller
     {

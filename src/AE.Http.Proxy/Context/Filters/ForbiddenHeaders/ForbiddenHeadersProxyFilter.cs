@@ -3,6 +3,9 @@
     using System.Collections.Generic;
     using System.Linq;
 
+    using AE.Http.Proxy.Abstractions.Context;
+    using AE.Http.Proxy.Abstractions.Context.Filters;
+
     public class ForbiddenHeadersProxyFilter : IProxyFilter
     {
         private readonly ForbiddenHeadersConfiguration configuration;

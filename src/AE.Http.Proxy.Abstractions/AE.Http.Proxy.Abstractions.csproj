@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{1166D6CE-32B8-4EFA-8550-4D5AF9F83615}</ProjectGuid>
+    <ProjectGuid>{D31C29FE-E02A-42D9-BFCA-FD3AFB8C5CE4}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AE.Http.Proxy</RootNamespace>
-    <AssemblyName>AE.Http.Proxy</AssemblyName>
+    <RootNamespace>AE.Http.Proxy.Abstractions</RootNamespace>
+    <AssemblyName>AE.Http.Proxy.Abstractions</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -32,20 +32,32 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Context\Filters\ForbiddenHeaders\ForbiddenHeadersConfiguration.cs" />
-    <Compile Include="Context\Filters\ForbiddenHeaders\ForbiddenHeadersProxyFilter.cs" />
-    <Compile Include="Context\Filters\RewriteContent\RewriteContentConfiguration.cs" />
-    <Compile Include="Context\Filters\RewriteContent\RewriteContentProxyFilter.cs" />
+    <Compile Include="Context\ContentDescriptor.cs" />
+    <Compile Include="Context\Converters\ConvertersExtensions.cs" />
+    <Compile Include="Context\Converters\IMessageConverter.cs" />
+    <Compile Include="Context\Converters\IMessageConverterGeneric.cs" />
+    <Compile Include="Context\Filters\IPRoxyFilter.cs" />
+    <Compile Include="Context\HeaderContext.cs" />
+    <Compile Include="Context\HeaderOrigin.cs" />
+    <Compile Include="Context\IHeaderContext.cs" />
+    <Compile Include="Context\IRequestContext.cs" />
+    <Compile Include="Context\MessageContext.cs" />
+    <Compile Include="Context\RequestContext.cs" />
+    <Compile Include="Context\RequestMethod.cs" />
+    <Compile Include="Context\ResponseContext.cs" />
+    <Compile Include="Context\StringExtensions.cs" />
+    <Compile Include="IProxy.cs" />
+    <Compile Include="IProxyCaller.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ProxyBuilder.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\AE.Http.Proxy.Abstractions\AE.Http.Proxy.Abstractions.csproj">
-      <Project>{D31C29FE-E02A-42D9-BFCA-FD3AFB8C5CE4}</Project>
-      <Name>AE.Http.Proxy.Abstractions</Name>
-    </ProjectReference>
+    <Compile Include="Proxy.cs" />
+    <Compile Include="ProxyCaller.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

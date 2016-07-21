@@ -1,11 +1,11 @@
-﻿namespace AE.Http.Proxy
+﻿namespace AE.Http.Proxy.Abstractions
 {
     using System;
     using System.Collections.Generic;
 
-    using AE.Http.Proxy.Context;
-    using AE.Http.Proxy.Context.Converters;
-    using AE.Http.Proxy.Context.Filters;
+    using AE.Http.Proxy.Abstractions.Context;
+    using AE.Http.Proxy.Abstractions.Context.Converters;
+    using AE.Http.Proxy.Abstractions.Context.Filters;
 
     public class Proxy : IProxy
     {

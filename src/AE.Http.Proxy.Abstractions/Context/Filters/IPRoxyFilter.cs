@@ -1,4 +1,4 @@
-﻿namespace AE.Http.Proxy.Context.Filters
+﻿namespace AE.Http.Proxy.Abstractions.Context.Filters
 {
     public interface IProxyFilter
     {

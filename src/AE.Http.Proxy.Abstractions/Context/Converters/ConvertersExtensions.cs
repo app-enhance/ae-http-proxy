@@ -1,4 +1,4 @@
-﻿namespace AE.Http.Proxy.Context.Converters
+﻿namespace AE.Http.Proxy.Abstractions.Context.Converters
 {
     using System;
     using System.Collections.Generic;

@@ -1,4 +1,4 @@
-﻿namespace AE.Http.Proxy
+﻿namespace AE.Http.Proxy.Abstractions
 {
     public interface IProxy
     {

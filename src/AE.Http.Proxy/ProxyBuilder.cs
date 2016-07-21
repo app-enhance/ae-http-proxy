@@ -4,8 +4,9 @@
     using System.Collections.Generic;
     using System.Linq;
 
-    using AE.Http.Proxy.Context.Converters;
-    using AE.Http.Proxy.Context.Filters;
+    using AE.Http.Proxy.Abstractions;
+    using AE.Http.Proxy.Abstractions.Context.Converters;
+    using AE.Http.Proxy.Abstractions.Context.Filters;
 
     public class ProxyBuilder
     {
