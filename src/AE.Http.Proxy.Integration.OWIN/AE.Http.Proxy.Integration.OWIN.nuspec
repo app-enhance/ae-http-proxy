@@ -8,7 +8,7 @@
     <owners>Wojciech Gadziński</owners>
     <licenseUrl>https://github.com/app-enhance/ae-http-proxy/blob/master/LICENSE</licenseUrl>
     <projectUrl>https://github.com/app-enhance/ae-http-proxy</projectUrl>
-    <iconUrl>https://avatars0.githubusercontent.com/u/16389840?v=3&s=200</iconUrl>
+    <iconUrl>http://app-enhance.github.io/images/logo2.jpg</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>This package is extension for AE.Http.Proxy which provide converters for OWIN Request/Response types</description>
     <copyright>Copyright 2016</copyright>
