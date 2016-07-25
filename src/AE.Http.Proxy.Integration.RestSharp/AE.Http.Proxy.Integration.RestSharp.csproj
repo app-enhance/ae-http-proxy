@@ -46,6 +46,7 @@
     <Compile Include="RestSharpProxyCaller.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="AE.Http.Proxy.Integration.RestSharp.nuspec" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
