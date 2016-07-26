@@ -13,5 +13,8 @@
     <description>This package is extension for AE.Http.Proxy which provide converters for RestSharp Request/Response types and also proxy caller using RestSharp client</description>
     <copyright>Copyright 2016</copyright>
     <tags>Http Proxy RestSharp</tags>
+    <dependencies>
+      <dependency id="AE.Http.Proxy" version="1.0" />
+    </dependencies>
   </metadata>
 </package>

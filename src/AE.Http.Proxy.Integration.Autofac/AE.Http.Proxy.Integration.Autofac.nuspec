@@ -13,5 +13,8 @@
     <description>This package is extension for AE.Http.Proxy which provide simple integration with autofac DI container</description>
     <copyright>Copyright 2016</copyright>
     <tags>Http Proxy Autofac</tags>
+    <dependencies>
+      <dependency id="AE.Http.Proxy" version="1.0" />
+    </dependencies>
   </metadata>
 </package>

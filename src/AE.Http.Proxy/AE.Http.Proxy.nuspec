@@ -13,5 +13,8 @@
     <description>Library for implementation of AE.Http.Proxy.Abstractions with builder and implementation of basic filters - rewrite content and forbidden headers</description>
     <copyright>Copyright 2016</copyright>
     <tags>Http Proxy Builder Rewrite Content Headers Block</tags>
+    <dependencies>
+      <dependency id="AE.Http.Proxy.Abstractions" version="1.0" />
+    </dependencies>
   </metadata>
 </package>
