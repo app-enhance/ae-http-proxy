@@ -14,7 +14,7 @@
     <copyright>Copyright 2016</copyright>
     <tags>Http Proxy RestSharp</tags>
     <dependencies>
-      <dependency id="AE.Http.Proxy" version="1.0" />
+      <dependency id="AE.Http.Proxy" version="1.1" />
     </dependencies>
   </metadata>
 </package>
