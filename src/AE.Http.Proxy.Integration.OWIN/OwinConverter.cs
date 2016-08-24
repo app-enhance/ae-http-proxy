@@ -12,9 +12,9 @@
 
     public class OwinConverter : IMessageConverter<IOwinRequest, IOwinResponse>
     {
-        public bool CanConvertFrom<TReq, TRes>()
+        public bool CanConvertFrom<TRequest, TResponse>()
         {
-            return typeof(IOwinRequest).IsAssignableFrom(typeof(TReq)) && typeof(IOwinResponse).IsAssignableFrom(typeof(TRes));
+            return typeof(IOwinRequest).IsAssignableFrom(typeof(TRequest)) && typeof(IOwinResponse).IsAssignableFrom(typeof(TResponse));
         }
 
         public RequestContext ConvertFromRequest(IOwinRequest request)
@@ -35,12 +35,12 @@
 
         public IOwinRequest ConvertToRequest(RequestContext requestContext)
         {
-            throw new NotSupportedException("There is not possible to create OwinRequest internally");
+            throw new NotSupportedException("There is not possible to create OwinRequest internally. Use ConvertToRequest(RequestContext, ref IOwinRequest) instead");
         }
 
         public IOwinResponse ConvertToResponse(ResponseContext responseContext)
         {
-            throw new NotSupportedException("There is not possible to create OwinResponse internally");
+            throw new NotSupportedException("There is not possible to create OwinResponse internally. Use ConvertToResponse(ResponseContext, ref IOwinResponse) instead");
         }
 
         public void ConvertToRequest(RequestContext requestContext, ref IOwinRequest request)

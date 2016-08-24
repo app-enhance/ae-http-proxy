@@ -12,9 +12,9 @@
 
     public class RestSharpConverter : IMessageConverter<IRestRequest, IRestResponse>
     {
-        public bool CanConvertFrom<TReq, TRes>()
+        public bool CanConvertFrom<TRequest, TResponse>()
         {
-            return typeof(IRestRequest).IsAssignableFrom(typeof(TReq)) && typeof(IRestResponse).IsAssignableFrom(typeof(TRes));
+            return typeof(IRestRequest).IsAssignableFrom(typeof(TRequest)) && typeof(IRestResponse).IsAssignableFrom(typeof(TResponse));
         }
 
         public RequestContext ConvertFromRequest(IRestRequest request)

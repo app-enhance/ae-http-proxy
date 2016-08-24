@@ -35,6 +35,7 @@
     <Reference Include="System.Management" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Context\Converters\SelfMessageConverter.cs" />
     <Compile Include="Context\Filters\ForbiddenHeaders\ForbiddenHeadersConfiguration.cs" />
     <Compile Include="Context\Filters\ForbiddenHeaders\ForbiddenHeadersProxyFilter.cs" />
     <Compile Include="Context\Filters\RewriteContent\RewriteContentConfiguration.cs" />

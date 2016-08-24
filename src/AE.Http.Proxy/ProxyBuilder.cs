@@ -7,6 +7,7 @@
     using AE.Http.Proxy.Abstractions;
     using AE.Http.Proxy.Abstractions.Context.Converters;
     using AE.Http.Proxy.Abstractions.Context.Filters;
+    using AE.Http.Proxy.Context.Converters;
 
     public class ProxyBuilder
     {
@@ -26,6 +27,9 @@
             _caller = caller;
             _messageConverters = new List<IMessageConverter>();
             _proxyfilters = new List<IProxyFilter>();
+
+            // Add default self converter
+            AddMessageConverter(new SelfMessageConverter());
         }
 
         public ProxyBuilder AddMessageConverters(params IMessageConverter[] converters)

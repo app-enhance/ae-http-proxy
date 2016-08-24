@@ -64,6 +64,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Context\Converters\SelfConverterTests.cs" />
     <Compile Include="Context\Filters\RegexpBenchmarks\BenchmarkDataConstants.cs" />
     <Compile Include="Context\Filters\RegexpBenchmarks\RegexpBenchmark.cs" />
     <Compile Include="Context\Filters\RewriteContentFilterTests.cs" />
