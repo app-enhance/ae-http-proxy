@@ -125,14 +125,29 @@
         }
 
         [Theory]
-        [InlineData("/pfm")]
-        public void Rewrite_path_in_correct_way(string route)
+        [InlineData("/pfm", "/UAT/PL2/PL/AlfaVoxStatusChecker/#/status")]
+        public void Rewrite_path_in_correct_way(string route, string path)
         {
             // Arrange
-            var path = "/UAT/PL2/PL/AlfaVoxStatusChecker/#/status";
             var configuration = new RewriteContentConfiguration(route, "http://test.com", "http://test.com");
             var rewriter = new RewriteContentProxyFilter(configuration);
             var request = new RequestContext(RequestMethod.GET, route + path, new Dictionary<string, string>(), new byte[0]);
+
+            // Act
+            rewriter.OnRequest(request);
+
+            // Assert
+            Assert.Equal(path, request.Path);
+        }
+
+        [Theory]
+        [InlineData("/pfm", "/A")]
+        public void Rewrite_path_in_correct_way_without_route_on_start_and_short(string route, string path)
+        {
+            // Arrange
+            var configuration = new RewriteContentConfiguration(route, "http://test.com", "http://test.com");
+            var rewriter = new RewriteContentProxyFilter(configuration);
+            var request = new RequestContext(RequestMethod.GET, path, new Dictionary<string, string>(), new byte[0]);
 
             // Act
             rewriter.OnRequest(request);

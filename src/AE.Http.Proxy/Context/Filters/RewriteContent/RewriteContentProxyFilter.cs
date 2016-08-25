@@ -49,7 +49,12 @@
         private string RewriteRequestPath(string path)
         {
             var route = _config.RoutePath;
-            return route == EmptyRoute ? path : path.Substring(route.Length);
+            if (route == EmptyRoute || path.StartsWith(route) == false)
+            {
+                return path;
+            }
+
+            return path.Substring(route.Length);
         }
 
         private string RewriteContent(string content)
