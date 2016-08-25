@@ -2,7 +2,6 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
 
     using AE.Http.Proxy.Abstractions;
     using AE.Http.Proxy.Abstractions.Context.Converters;
@@ -34,7 +33,7 @@
 
         public ProxyBuilder AddMessageConverters(params IMessageConverter[] converters)
         {
-            if (converters == null || converters.Any() == false)
+            if (converters == null)
             {
                 throw new ArgumentNullException("converters");
             }
@@ -60,7 +59,7 @@
 
         public ProxyBuilder AddFilters(params IProxyFilter[] filters)
         {
-            if (filters == null || filters.Any() == false)
+            if (filters == null)
             {
                 throw new ArgumentNullException("filters");
             }
