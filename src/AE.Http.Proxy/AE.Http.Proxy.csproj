@@ -38,6 +38,8 @@
     <Compile Include="Context\Converters\SelfMessageConverter.cs" />
     <Compile Include="Context\Filters\ForbiddenHeaders\ForbiddenHeadersConfiguration.cs" />
     <Compile Include="Context\Filters\ForbiddenHeaders\ForbiddenHeadersProxyFilter.cs" />
+    <Compile Include="Context\Filters\ProxyRequestFilter.cs" />
+    <Compile Include="Context\Filters\ProxyResponseFilter.cs" />
     <Compile Include="Context\Filters\RewriteContent\RewriteContentConfiguration.cs" />
     <Compile Include="Context\Filters\RewriteContent\RewriteContentProxyFilter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
