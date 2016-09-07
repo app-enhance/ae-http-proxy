@@ -32,8 +32,7 @@
         {
             var path = new StringBuilder(request.Resource);
             var urlSegments = request.Parameters.Where(x => x.Type == ParameterType.UrlSegment);
-
-            //// TODO: tests
+            
             foreach (var urlSegment in urlSegments)
             {
                 path.AppendFormat("/{0}", urlSegment.Value);
@@ -53,6 +52,11 @@
             var bodyParameter = request.Parameters.FirstOrDefault(x => x.Type == ParameterType.RequestBody);
             if (bodyParameter != null && bodyParameter.Value != null)
             {
+                if (bodyParameter.Value is string)
+                {
+                    return bodyParameter.Value as string;
+                }
+
                 return Convert.ToString(bodyParameter.Value);
             }
 
@@ -64,6 +68,11 @@
             var bodyParameter = request.Parameters.FirstOrDefault(x => x.Type == ParameterType.RequestBody);
             if (bodyParameter != null && bodyParameter.Value != null)
             {
+                if (bodyParameter.Value is string)
+                {
+                    return Encoding.UTF8.GetBytes(bodyParameter.Value as string);
+                }
+
                 var formatter = new BinaryFormatter();
                 using (var stream = new MemoryStream())
                 {

@@ -36,7 +36,7 @@
         {
             var request = new RestRequest(requestContext.Path, requestContext.Method.ConvertToMethod());
             SetHeaders(requestContext.Headers, request);
-            request.AddBody(requestContext.Content);
+            SetBody(requestContext, request);
             return request;
         }
 
@@ -57,7 +57,7 @@
             request.Method = requestContext.Method.ConvertToMethod();
             request.Resource = requestContext.Path;
             SetHeaders(requestContext.Headers, request);
-            request.AddBody(requestContext.Content);
+            SetBody(requestContext, request);
         }
 
         public void ConvertToResponse(ResponseContext responseContext, ref IRestResponse response)
@@ -88,6 +88,12 @@
             {
                 response.Headers.Add(new Parameter { Name = headerContext.Key, Value = headerContext.Value, Type = ParameterType.HttpHeader });
             }
+        }
+
+        private static void SetBody(RequestContext requestContext, IRestRequest request)
+        {
+            // TODO: possible to add more logic to handle uploading files and images
+            request.AddParameter(requestContext.ContentType, requestContext.Content, ParameterType.RequestBody);
         }
     }
 }

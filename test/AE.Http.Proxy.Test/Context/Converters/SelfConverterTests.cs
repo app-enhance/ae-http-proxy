@@ -16,7 +16,7 @@
         {
             // Arrange
             var selfConverter = new SelfMessageConverter();
-            var requestContext = new RequestContext(RequestMethod.GET, "/test", new Dictionary<string, string> { { "test", "test" } }, new byte[0]);
+            var requestContext = new RequestContext(RequestMethod.GET, "/test", new Dictionary<string, string> { { "test", "test" } }, new byte[] { 1 });
             
             // Act
             var request = selfConverter.ConvertToRequest(requestContext);
@@ -36,7 +36,7 @@
         {
             // Arrange
             var selfConverter = new SelfMessageConverter();
-            var request = new RequestContext(RequestMethod.GET, "/test", new Dictionary<string, string> { { "test", "test" } }, new byte[0]);
+            var request = new RequestContext(RequestMethod.GET, "/test", new Dictionary<string, string> { { "test", "test" } }, new byte[] { 1 });
 
             // Act
             var requestContext = selfConverter.ConvertFromRequest(request);
@@ -69,7 +69,7 @@
         {
             // Arrange
             var selfConverter = new SelfMessageConverter();
-            var stubRequestContext = new RequestContext(RequestMethod.GET, "", new Dictionary<string, string>(), new byte[0]);
+            var stubRequestContext = new RequestContext(RequestMethod.GET, "", new Dictionary<string, string>(), new byte[] { 1 });
 
             // Act
             var action = new Action(() => selfConverter.ConvertToRequest(null, ref stubRequestContext));
@@ -83,8 +83,8 @@
         {
             // Arrange
             var selfConverter = new SelfMessageConverter();
-            var stubRequestContext = new RequestContext(RequestMethod.GET, "", new Dictionary<string, string>(), new byte[0]);
-            var stubResponseContext = new ResponseContext(stubRequestContext, new Dictionary<string, string>(), new byte[0], 200);
+            var stubRequestContext = new RequestContext(RequestMethod.GET, "", new Dictionary<string, string>(), new byte[] { 1 });
+            var stubResponseContext = new ResponseContext(stubRequestContext, new Dictionary<string, string>(), new byte[] { 1 }, 200);
 
             // Act
             var action = new Action(() => selfConverter.ConvertToResponse(null, ref stubResponseContext));
