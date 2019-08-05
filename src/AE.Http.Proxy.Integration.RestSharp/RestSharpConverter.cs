@@ -93,7 +93,10 @@
         private static void SetBody(RequestContext requestContext, IRestRequest request)
         {
             // TODO: possible to add more logic to handle uploading files and images
-            request.AddParameter(requestContext.ContentType, requestContext.Content, ParameterType.RequestBody);
+            if (requestContext.Method == RequestMethod.POST || requestContext.Method == RequestMethod.PATCH || requestContext.Method == RequestMethod.PUT)
+            {
+                request.AddParameter(requestContext.ContentType, requestContext.Content, ParameterType.RequestBody);
+            }
         }
     }
 }
